@@ -34,7 +34,7 @@ public class Manager {
         createButton(size);
         r.start();
         newGame();
-
+        viewPuzzle.setResizable(false);
     }
 
     public void createButton(int size) {
