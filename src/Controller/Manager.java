@@ -50,10 +50,10 @@ public class Manager {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 count++;
-                JButton btn = new JButton(count + "");
+                JButton btn = new JButton(count + "");//create new empty button
                 matrix[i][j] = btn;//add btn vào matrix để dễ điều khiển 
-                viewPuzzle.getPanelPuzzle().add(btn);
-                btn.addActionListener(new ActionListener() {
+                viewPuzzle.getPanelPuzzle().add(btn);//add btn vào panel
+                btn.addActionListener(new ActionListener() {//add actionListener cho btn -> khi click 
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         if (!isWin) {
@@ -76,7 +76,7 @@ public class Manager {
     }
 
     public void mixButton() {
-        for (int k = 0; k < 10; k++) {
+        for (int k = 0; k < 1000; k++) {//vòng lặp chạy để đổi chỗ các các btn với btn trống
             Point p = getButtonEmpty(); //lấy tọa độ của ô trống
             int i = p.x;// i là hàng btn rỗng
             int j = p.y;//j là cột btn rỗng
@@ -132,12 +132,12 @@ public class Manager {
         return null;
     }
 
-    //check btn click có thể di chuyển không
-    public boolean checkMoveButton(JButton btn) {
-        int i1 = 0, j1 = 0;
-        //tọa độ của btn rỗng
+    //check btn click có nằm cạnh btn rỗng hay không
+    public boolean checkMoveButton(JButton btn) {       
+        //tọa độ của btn rỗng      
         int x = getButtonEmpty().x;
         int y = getButtonEmpty().y;
+        int i1 = 0, j1 = 0;
         //lấy tọa độ của btn click trong matrix
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
@@ -148,11 +148,11 @@ public class Manager {
                 }
             }
         }
-        //left and right
+        //check empty btn is left or right of clicked btn
         if ((x == i1 && y == (j1 - 1)) || (x == i1 && y == j1 + 1)) {
             return true;
         }
-        //up and down
+        //up or down
         if ((x == i1 - 1 && y == j1) || (x == i1 + 1 && y == j1)) {
             return true;
         }
